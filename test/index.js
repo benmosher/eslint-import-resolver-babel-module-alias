@@ -30,6 +30,15 @@ describe('eslint-import-resolver-module-alias', () => {
                 path: path.resolve(__dirname, './examples/components/c1.js')
             });
     });
+    
+
+    it('should return true + path:null when mapped to a builtin', () => {
+        expect(resolverPlugin.resolve('path', path.resolve('./test/examples/components/subcomponent/sub/c2'), opts))
+            .to.eql({
+                found: true,
+                path: null
+            });
+    });
 
     it('should return true when no mapping is required', () => {
         expect(resolverPlugin.resolve('./sub/sub/c2', path.resolve('./test/examples/components/c1'), opts))
